@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.simple.mapper.LocationMapper">
+    <resultMap id="BaseResultMap" type="com.example.simple.entity.Location">
+        <!--@mbg.generated-->
+        <!--@Table t_location-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime"/>
+        <result column="deleted" jdbcType="BOOLEAN" property="deleted"/>
+        <result column="area_id" jdbcType="BIGINT" property="areaId"/>
+        <result column="row" jdbcType="INTEGER" property="row"/>
+        <result column="col" jdbcType="INTEGER" property="col"/>
+        <result column="part_no" jdbcType="VARCHAR" property="partNo"/>
+        <result column="booked" jdbcType="BOOLEAN" property="booked"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, create_time, update_time, delete_time, deleted, area_id, `row`, col, part_no,
+        booked
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from t_location
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete
+        from t_location
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.simple.entity.Location"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into t_location (create_time, update_time, delete_time,
+                                deleted, area_id, `row`,
+                                col, part_no, booked)
+        values (#{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP},
+                #{deleted,jdbcType=BOOLEAN}, #{areaId,jdbcType=BIGINT}, #{row,jdbcType=INTEGER},
+                #{col,jdbcType=INTEGER}, #{partNo,jdbcType=VARCHAR}, #{booked,jdbcType=BOOLEAN})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.simple.entity.Location"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into t_location
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="deleteTime != null">
+                delete_time,
+            </if>
+            <if test="deleted != null">
+                deleted,
+            </if>
+            <if test="areaId != null">
+                area_id,
+            </if>
+            <if test="row != null">
+                `row`,
+            </if>
+            <if test="col != null">
+                col,
+            </if>
+            <if test="partNo != null">
+                part_no,
+            </if>
+            <if test="booked != null">
+                booked,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleteTime != null">
+                #{deleteTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleted != null">
+                #{deleted,jdbcType=BOOLEAN},
+            </if>
+            <if test="areaId != null">
+                #{areaId,jdbcType=BIGINT},
+            </if>
+            <if test="row != null">
+                #{row,jdbcType=INTEGER},
+            </if>
+            <if test="col != null">
+                #{col,jdbcType=INTEGER},
+            </if>
+            <if test="partNo != null">
+                #{partNo,jdbcType=VARCHAR},
+            </if>
+            <if test="booked != null">
+                #{booked,jdbcType=BOOLEAN},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.simple.entity.Location">
+        <!--@mbg.generated-->
+        update t_location
+        <set>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleteTime != null">
+                delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleted != null">
+                deleted = #{deleted,jdbcType=BOOLEAN},
+            </if>
+            <if test="areaId != null">
+                area_id = #{areaId,jdbcType=BIGINT},
+            </if>
+            <if test="row != null">
+                `row` = #{row,jdbcType=INTEGER},
+            </if>
+            <if test="col != null">
+                col = #{col,jdbcType=INTEGER},
+            </if>
+            <if test="partNo != null">
+                part_no = #{partNo,jdbcType=VARCHAR},
+            </if>
+            <if test="booked != null">
+                booked = #{booked,jdbcType=BOOLEAN},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.example.simple.entity.Location">
+        <!--@mbg.generated-->
+        update t_location
+        set create_time = #{createTime,jdbcType=TIMESTAMP},
+            update_time = #{updateTime,jdbcType=TIMESTAMP},
+            delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+            deleted     = #{deleted,jdbcType=BOOLEAN},
+            area_id     = #{areaId,jdbcType=BIGINT},
+            `row`       = #{row,jdbcType=INTEGER},
+            col         = #{col,jdbcType=INTEGER},
+            part_no     = #{partNo,jdbcType=VARCHAR},
+            booked      = #{booked,jdbcType=BOOLEAN}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List">
+        </include>
+        from t_location
+        where deleted = 0
+    </select>
+</mapper>

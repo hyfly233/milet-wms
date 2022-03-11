@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.simple.mapper.AreaMapper">
+    <resultMap id="BaseResultMap" type="com.example.simple.entity.Area">
+        <!--@mbg.generated-->
+        <!--@Table t_area-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime"/>
+        <result column="deleted" jdbcType="BOOLEAN" property="deleted"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="area_type" jdbcType="INTEGER" property="areaType"/>
+        <result column="line_type" jdbcType="INTEGER" property="lineType"/>
+        <result column="max_row" jdbcType="INTEGER" property="maxRow"/>
+        <result column="max_col" jdbcType="INTEGER" property="maxCol"/>
+        <result column="step_id" jdbcType="BIGINT" property="stepId"/>
+        <result column="overflow_id" jdbcType="BIGINT" property="overflowId"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, create_time, update_time, delete_time, deleted, `name`, area_type, line_type,
+        max_row, max_col, step_id, overflow_id
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from t_area
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete
+        from t_area
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.simple.entity.Area"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into t_area (create_time, update_time, delete_time,
+                            deleted, `name`, area_type,
+                            line_type, max_row, max_col,
+                            step_id, overflow_id)
+        values (#{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP},
+                #{deleted,jdbcType=BOOLEAN}, #{name,jdbcType=VARCHAR}, #{areaType,jdbcType=INTEGER},
+                #{lineType,jdbcType=INTEGER}, #{maxRow,jdbcType=INTEGER}, #{maxCol,jdbcType=INTEGER},
+                #{stepId,jdbcType=BIGINT}, #{overflowId,jdbcType=BIGINT})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.simple.entity.Area"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into t_area
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="deleteTime != null">
+                delete_time,
+            </if>
+            <if test="deleted != null">
+                deleted,
+            </if>
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="areaType != null">
+                area_type,
+            </if>
+            <if test="lineType != null">
+                line_type,
+            </if>
+            <if test="maxRow != null">
+                max_row,
+            </if>
+            <if test="maxCol != null">
+                max_col,
+            </if>
+            <if test="stepId != null">
+                step_id,
+            </if>
+            <if test="overflowId != null">
+                overflow_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleteTime != null">
+                #{deleteTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleted != null">
+                #{deleted,jdbcType=BOOLEAN},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="areaType != null">
+                #{areaType,jdbcType=INTEGER},
+            </if>
+            <if test="lineType != null">
+                #{lineType,jdbcType=INTEGER},
+            </if>
+            <if test="maxRow != null">
+                #{maxRow,jdbcType=INTEGER},
+            </if>
+            <if test="maxCol != null">
+                #{maxCol,jdbcType=INTEGER},
+            </if>
+            <if test="stepId != null">
+                #{stepId,jdbcType=BIGINT},
+            </if>
+            <if test="overflowId != null">
+                #{overflowId,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.simple.entity.Area">
+        <!--@mbg.generated-->
+        update t_area
+        <set>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleteTime != null">
+                delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleted != null">
+                deleted = #{deleted,jdbcType=BOOLEAN},
+            </if>
+            <if test="name != null">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="areaType != null">
+                area_type = #{areaType,jdbcType=INTEGER},
+            </if>
+            <if test="lineType != null">
+                line_type = #{lineType,jdbcType=INTEGER},
+            </if>
+            <if test="maxRow != null">
+                max_row = #{maxRow,jdbcType=INTEGER},
+            </if>
+            <if test="maxCol != null">
+                max_col = #{maxCol,jdbcType=INTEGER},
+            </if>
+            <if test="stepId != null">
+                step_id = #{stepId,jdbcType=BIGINT},
+            </if>
+            <if test="overflowId != null">
+                overflow_id = #{overflowId,jdbcType=BIGINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.example.simple.entity.Area">
+        <!--@mbg.generated-->
+        update t_area
+        set create_time = #{createTime,jdbcType=TIMESTAMP},
+            update_time = #{updateTime,jdbcType=TIMESTAMP},
+            delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+            deleted     = #{deleted,jdbcType=BOOLEAN},
+            `name`      = #{name,jdbcType=VARCHAR},
+            area_type   = #{areaType,jdbcType=INTEGER},
+            line_type   = #{lineType,jdbcType=INTEGER},
+            max_row     = #{maxRow,jdbcType=INTEGER},
+            max_col     = #{maxCol,jdbcType=INTEGER},
+            step_id     = #{stepId,jdbcType=BIGINT},
+            overflow_id = #{overflowId,jdbcType=BIGINT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List">
+        </include>
+        from t_area
+        where deleted = 0
+    </select>
+</mapper>
